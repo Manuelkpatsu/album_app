@@ -42,24 +42,22 @@ class _AlbumTileState extends State<AlbumTile> {
   Widget build(BuildContext context) {
     final modelData = widget.modelData;
 
-    return modelData.id == null
-        ? const SizedBox.shrink()
-        : ListTile(
-            leading: AlbumThumbnail(thumbnail: modelData.thumbnail),
-            title: AlbumNameText(name: modelData.name),
-            subtitle: Row(
-              children: [
-                AlbumCurrencyText(currency: modelData.currency),
-                const SizedBox(width: 5),
-                AlbumPriceText(price: modelData.price),
-              ],
-            ),
-            trailing: FavoriteButton(
-              favorite: modelData.favorite,
-              onPressed: () {
-                _eventController.add(FavoriteEvent(modelData.id, !modelData.favorite));
-              },
-            ),
-          );
+    return ListTile(
+      leading: AlbumThumbnail(thumbnail: modelData.thumbnail),
+      title: AlbumNameText(name: modelData.name),
+      subtitle: Row(
+        children: [
+          AlbumCurrencyText(currency: modelData.currency),
+          const SizedBox(width: 5),
+          AlbumPriceText(price: modelData.price),
+        ],
+      ),
+      trailing: FavoriteButton(
+        favorite: modelData.favorite,
+        onPressed: () {
+          _eventController.add(FavoriteEvent(modelData.id, !modelData.favorite));
+        },
+      ),
+    );
   }
 }

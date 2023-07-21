@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class AlbumTileModelData extends Equatable {
-  final int? id;
+  final int id;
   final String? name;
   final String? thumbnail;
   final double? price;
@@ -9,7 +9,7 @@ class AlbumTileModelData extends Equatable {
   final bool favorite;
 
   const AlbumTileModelData({
-    this.id,
+    this.id = 0,
     this.name,
     this.thumbnail,
     this.price,

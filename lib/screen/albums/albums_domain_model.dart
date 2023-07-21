@@ -32,9 +32,10 @@ class AlbumsDomainModel {
     _albumsModelDataSubject.add(const AlbumsModelData(loading: true));
 
     _albumRepository.getAlbumsForArtist(artistID).then((albumList) {
-      final albumTileModelDataList = albumList
+      final filteredAlbumList = albumList.where((album) => album.collectionId != null).toList();
+      final albumTileModelDataList = filteredAlbumList
           .map((album) => AlbumTileModelData(
-                id: album.collectionId,
+                id: album.collectionId!,
                 name: album.collectionName,
                 thumbnail: album.artworkUrl100,
                 price: album.collectionPrice,
